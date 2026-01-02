@@ -1,0 +1,47 @@
+{
+  "name": "@kilocode/app-builder-db",
+  "version": "0.0.1",
+  "description": "Database client for App Builder - SQLite via HTTP API with Drizzle ORM",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kilocode/app-builder-db.git"
+  },
+  "author": "Kilo Code",
+  "license": "Apache-2.0",
+  "keywords": [
+    "drizzle",
+    "sqlite",
+    "database",
+    "orm",
+    "app-builder"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build"
+  },
+  "peerDependencies": {
+    "drizzle-orm": ">=0.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "drizzle-orm": "^0.38.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  }
+}
