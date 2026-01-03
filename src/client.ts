@@ -7,12 +7,11 @@ import type { DatabaseConfig, QueryMethod, QueryResult } from "./types";
  */
 export function createExecuteQuery(config: DatabaseConfig = {}) {
   const url = config.url ?? process.env.DB_URL;
-  const appId = config.appId ?? process.env.DB_APP_ID;
   const token = config.token ?? process.env.DB_TOKEN;
 
-  if (!url || !appId || !token) {
+  if (!url || !token) {
     throw new Error(
-      "Missing database configuration. Provide url, appId, and token in config or set DB_URL, DB_APP_ID, and DB_TOKEN environment variables."
+      "Missing database configuration. Provide url and token in config or set DB_URL and DB_TOKEN environment variables."
     );
   }
 
@@ -21,7 +20,7 @@ export function createExecuteQuery(config: DatabaseConfig = {}) {
     params: unknown[],
     method: QueryMethod
   ): Promise<QueryResult> {
-    const response = await fetch(`${url}/api/${appId}/query`, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

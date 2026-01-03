@@ -15,8 +15,7 @@ bun add -D drizzle-kit
 
 The package uses these environment variables
 
-- `DB_URL` - Base URL for the database API
-- `DB_APP_ID` - Application ID for the database
+- `DB_URL` - Full URL for the database API query endpoint (e.g., `https://your-api.com/api/{appId}/query`)
 - `DB_TOKEN` - Authentication token
 
 ## Quick Start
@@ -115,8 +114,7 @@ import { createDatabase } from "@kilocode/app-builder-db";
 import * as schema from "./schema";
 
 export const db = createDatabase(schema, {
-  url: "https://custom-db-url.com",
-  appId: "my-app-id",
+  url: "https://custom-db-url.com/api/my-app-id/query",
   token: "my-token",
 });
 ```
@@ -144,7 +142,7 @@ const result = await executeQuery(
 Creates a Drizzle database client with your schema.
 
 - `schema` - Your Drizzle schema object
-- `config` - Optional configuration object with `url`, `appId`, and `token`
+- `config` - Optional configuration object with `url` and `token`
 
 ### `createDatabaseWithoutSchema(config?)`
 

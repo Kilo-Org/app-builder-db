@@ -15,16 +15,10 @@ export interface QueryResult {
  */
 export interface DatabaseConfig {
   /**
-   * Base URL for the database API
+   * Full URL for the database API
    * Defaults to process.env.DB_URL
    */
   url?: string;
-
-  /**
-   * Application ID for the database
-   * Defaults to process.env.DB_APP_ID
-   */
-  appId?: string;
 
   /**
    * Authentication token for the database API
